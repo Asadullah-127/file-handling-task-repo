@@ -2,6 +2,20 @@
 
 # This file includes placeholders for file handling tasks.
 # Students should complete each function according to the instructions.
+import csv
+
+def create_sample_csv():
+    #Creates a sample CSV file named 'data.csv' for Task 8.
+    sample_data = [
+        ["name", "age", "city"],
+        ["Alice", 30, "New York"],
+        ["Bob", 25, "Los Angeles"],
+        ["Charlie", 35, "Chicago"]
+    ]
+    with open("data.csv", "w", newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(sample_data)
+    print("Sample CSV file 'data.csv' created!")
 
 def task1_create_file():
    with open("OSSD.txt","w") as f:
@@ -31,7 +45,7 @@ def task5_find_word():
         if occ == 0:
             print(f"the word {word} does not exist in the file {"OSSD.txt"}.")
         else:
-            print(f"The word {word} occured {occ} times in the file {"OSSD.txt"}.")
+            print(f"The word '{word}' occured {occ} times in the file '{"OSSD.txt"}'.")
 
 
 def task6_copy_file():
@@ -45,18 +59,35 @@ def task7_replace_word():
     # TODO: Replace a specific word in the file with another word.
     with open("OSSD.txt", "r") as f:
             content = f.read()
-            new_content = content.replace(word_to_replace, replacement_word)
-    with open(filename, "w") as f:
+            new_content = content.replace("World", "Universe")
+    with open("OSSD.txt", "w") as f:
         f.write(new_content)
-        print(f"Replaced all occurrences of '{word_to_replace}' with '{replacement_word}' in '{filename}'.")
+        print(f"Replaced all occurrences of '{"World"}' with '{"Universe"}' in '{"OSSD.txt"}'.")
 
 def task8_read_csv():
     # TODO: Read a CSV file and print each row.
-    pass
+    filename = "data.csv"
+    with open(filename, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        print(f"\nReading '{filename}':")
+        for row in reader:
+            print(row)
 
 def task9_write_csv():
     # TODO: Write a list of dictionaries to a CSV file.
-    pass
+    data = [
+        {"name": "Alice", "age": 30, "city": "New York"},
+        {"name": "Bob", "age": 25, "city": "Los Angeles"},
+        {"name": "Charlie", "age": 35, "city": "Chicago"}
+    ]
+    filename = "output.csv"
+    with open(filename, "w", newline='') as csvfile:
+        fieldnames = ["name", "age", "city"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in data:
+            writer.writerow(row)
+    print(f"\nData written to '{filename}'!")
 
 def task10_json_file():
     # TODO: Create a JSON file from a Python dictionary and read it back.
