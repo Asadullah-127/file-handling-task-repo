@@ -23,6 +23,10 @@ This project provides 10 Python file handling tasks. Students are required to co
 - Test each function by calling it from a separate file or using a main method.
 - Submit your repository link after completing all tasks.
 
+## Changings made 
+
+ -Written code for all the given functions except task 10
+
 ## Submission
 
 - Fork the repo.
